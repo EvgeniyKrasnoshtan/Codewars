@@ -1,0 +1,20 @@
+/*
+  Kata Link:
+    https://www.codewars.com/kata/546d15cebed2e10334000ed9
+*/
+
+function rot13(str) {
+  var rot13ed = "";
+  var mayInvert = /[A-Za-z]+/;
+  for(var i = 0; i < str.length; i++) {
+    if(str[i].match(mayInvert) != null) {
+      var charPos = str[i].charCodeAt();
+      if( (charPos > 77 && charPos < 91) || (charPos > 109 && charPos < 123) )
+        rot13ed += String.fromCharCode(charPos - 13);
+      else if( (charPos < 78 && charPos > 64) || ( charPos < 110 && charPos > 96) )
+        rot13ed += String.fromCharCode(charPos + 13);
+    }
+    else rot13ed += str[i];
+  }
+  return rot13ed;
+}
